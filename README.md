@@ -51,7 +51,42 @@ Path: [`contracts/AuditBadge.sol`](contracts/AuditBadge.sol)
 1. Open [Remix IDE](https://remix.ethereum.org/)
 2. Select **Solidity Compiler** → `0.8.20` (enable Auto Compile)
 3. Deploy `AuditBadge.sol` via **Injected Provider (MetaMask)** or **Remix VM**
-4. Imports (pinned):
-   ```solidity
-   import "@openzeppelin/contracts@4.9.6/token/ERC721/ERC721.sol";
-   import "@openzeppelin/contracts@4.9.6/access/AccessControl.sol";
+
+```solidity
+// Imports (pinned)
+import "@openzeppelin/contracts@4.9.6/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts@4.9.6/access/AccessControl.sol";
+
+// Example Mint
+mintBadge(
+  0xYourWalletAddress,
+  2, // Gold
+  0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,
+  "https://example.com/audit-report.json"
+);
+• **level:** 0 = Bronze, 1 = Silver, 2 = Gold  
+• **auditHash:** keccak256 hash of the PDF/JSON audit report  
+• **auditURI:** link to the report (IPFS / Arweave / HTTPS)
+
+---
+
+## 🛠 Deployment Notes
+
+- Designed for **OpenZeppelin 4.9.x**
+- Solidity compiler: `0.8.20`
+- Always use **Multisig/DAO** for `DEFAULT_ADMIN_ROLE`
+- Rotate `AUDITOR_ROLE` according to ops policy
+
+---
+
+## 🗺 Roadmap
+
+- Add unit tests (Hardhat / Foundry)
+- IPFS integration for audit reports
+- Example frontend dApp
+
+---
+
+## 📄 License
+
+MIT © 2025 Silent47boryara
