@@ -19,9 +19,10 @@ It enforces non-transferability, disables approvals, and stores immutable audit 
 
 ## 📜 Contract
 
-Path: [`contracts/AuditBadge.sol`](contracts/AuditBadge.sol)
+Path: `contracts/AuditBadge.sol`
 
 ### Key Functions
+
 - `mintBadge(address to, AuditLevel level, bytes32 auditHash, string auditURI)`  
   → Mint by `AUDITOR_ROLE`
 - `burn(uint256 tokenId)`  
@@ -38,6 +39,7 @@ Path: [`contracts/AuditBadge.sol`](contracts/AuditBadge.sol)
 ---
 
 ## 🔒 Security Notes
+
 - **No approvals:** `approve` / `setApprovalForAll` → always revert (prevents grief burns)
 - **OpenZeppelin pinned:** designed for OZ **4.9.x** (`_beforeTokenTransfer`)
 - If migrating to **OZ 5.x** → adapt to `_update` hook
@@ -64,9 +66,12 @@ mintBadge(
   0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,
   "https://example.com/audit-report.json"
 );
-• **level:** 0 = Bronze, 1 = Silver, 2 = Gold  
-• **auditHash:** keccak256 hash of the PDF/JSON audit report  
-• **auditURI:** link to the report (IPFS / Arweave / HTTPS)
+
+// Metadata notes
+// level: 0 = Bronze, 1 = Silver, 2 = Gold
+// auditHash: keccak256 hash of the PDF/JSON audit report
+// auditURI: link to the report (IPFS / Arweave / HTTPS)
+```
 
 ---
 
