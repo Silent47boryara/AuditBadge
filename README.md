@@ -1,3 +1,11 @@
+## 🔍 Try the AI Auditor
+
+You can test the **Smart Contract Audit | Legal Kornet** GPT directly here:  
+👉 [Launch GPT on ChatGPT.com](https://chatgpt.com/g/g-688b6ee115c4819193c8a8f3c0bf6861-smart-contract-audit-legal-kornet)
+
+This GPT analyzes Solidity smart contracts for vulnerabilities and provides legal classification under the Howey and Reves tests.  
+Developed by **Legal Kornet™** as part of the AuditBadge ecosystem.
+
 # AuditBadge — Soulbound ERC-721 Audit Certificate
 
 **AuditBadge** is a **soulbound** (non-transferable) ERC-721 token used to certify that a project has passed a smart-contract audit.  
