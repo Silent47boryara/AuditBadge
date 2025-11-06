@@ -1,0 +1,46 @@
+# 🛡️ AuditBadge — AI-Powered Smart Contract Audit
+
+**AuditBadge** is an experimental project by **Legal Kornet™**, aimed at creating an intelligent platform for smart contract auditing using advanced artificial intelligence (GPT agents).
+
+---
+
+## 🎯 Project Goal
+To build a fully autonomous system that:
+- Analyzes Solidity smart contracts for vulnerabilities;
+- Classifies tokens under the **Howey**, **Reves**, and **Capital Risk** tests;
+- Generates **Markdown-based audit reports** suitable for legal use;
+- Allows projects to obtain an **official Legal Kornet™-signed opinion** via API.
+
+---
+
+## 🤖 Current Status
+The project is currently in the **AI research phase**.  
+Ongoing integrations include:
+- **OpenAI Agents SDK** (multi-agent orchestration),
+- **Telegram / TON mini-app** frontend interface,
+- **GitHub Actions** workflow for contract verification on commit.
+
+At this stage, the project **does not perform automatic audits**, but serves as a demonstration of Legal Kornet’s AI-driven audit and compliance automation capabilities.
+
+---
+
+## 🧩 Upcoming Features
+- Support for **Solidity**, **Vyper**, and **Rust (Solana)** contracts;  
+- Reports with **gas efficiency** and **attack surface** metrics;  
+- Blockchain-signed audit badges (**AuditBadge NFT**);  
+- Whitepaper analysis for **security-token indicators**;  
+- Public API for **dApp developers and exchanges**.
+
+---
+
+## 🧠 About Legal Kornet™
+**Legal Kornet™** is a legal firm specializing in Web3 law, tokenization, and audit services.  
+Over **300 blockchain projects** have received Legal Opinions or listing assistance on major exchanges (Binance, KuCoin, OKX, and others).
+
+🌐 [www.legal-kornet.com](https://www.legal-kornet.com)  
+📧 info@legal-kornet.com  
+📜 [Telegram](https://t.me/legalkornet) | [X](https://x.com/legalkornet)
+
+---
+
+> ⚙️ *"AI won’t replace auditors. But those who use AI will."*
