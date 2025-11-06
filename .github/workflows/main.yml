@@ -1,9 +1,9 @@
-name: Smart Contract Audit by Legal Kornet
+name: Smart Contract Audit Bot
 
 on:
   push:
-    paths:
-      - "contracts/*.sol"
+    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   audit:
@@ -22,16 +22,43 @@ jobs:
         run: |
           pip install openai
 
-      - name: Run Smart Contract Audit
+      - name: Run smart contract audit
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          python scripts/audit_contract.py
+          python - <<'EOF'
+          from openai import OpenAI
+          import os
 
-      - name: Commit and Push Reports
-        run: |
-          git config --global user.name "Legal Kornet Bot"
-          git config --global user.email "bot@legalkornet.com"
-          git add audits/
-          git commit -m "Auto audit report $(date '+%Y-%m-%d %H:%M:%S')" || echo "No new reports to commit"
-          git push
+          client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+          print("🔍 Starting Smart Contract Audit...")
+
+          with open("contract.sol", "r") as f:
+              contract = f.read()
+
+          prompt = f"""
+          You are a Solidity security auditor.
+          Review the following smart contract for:
+          - reentrancy vulnerabilities
+          - integer overflows/underflows
+          - logic flaws
+          - access control issues
+          Return a concise Markdown report.
+          Contract:
+          {contract}
+          """
+
+          response = client.chat.completions.create(
+              model="gpt-5",
+              messages=[{"role": "user", "content": prompt}],
+          )
+
+          report = response.choices[0].message.content
+          print(report)
+
+          with open("AUDIT_REPORT.md", "w") as f:
+              f.write(report)
+
+          print("\n✅ Audit completed. Report saved to AUDIT_REPORT.md")
+          EOF
