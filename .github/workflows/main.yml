@@ -1,0 +1,37 @@
+name: Smart Contract Audit by Legal Kornet
+
+on:
+  push:
+    paths:
+      - "contracts/*.sol"
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install openai
+
+      - name: Run Smart Contract Audit
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python scripts/audit_contract.py
+
+      - name: Commit and Push Reports
+        run: |
+          git config --global user.name "Legal Kornet Bot"
+          git config --global user.email "bot@legalkornet.com"
+          git add audits/
+          git commit -m "Auto audit report $(date '+%Y-%m-%d %H:%M:%S')" || echo "No new reports to commit"
+          git push
